@@ -1,0 +1,16 @@
+
+<h1>Bienvenido</h1>
+<h1>{{username}}</h1>
+<p>Listado</p>
+{{#if hasUsers }}
+    <ul>
+        {{#each usuarios}}
+            <div>
+                <img src="{{this.foto_perfil}}">
+                <p>{{this.nombre}} {{this.edad}}</p>
+            </div>
+        {{/each}}
+    </ul>
+{{else}}
+    <p class="text-red-500">Ningun usuario registrado</p>
+{{/if}}
