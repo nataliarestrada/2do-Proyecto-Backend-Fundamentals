@@ -9,7 +9,7 @@ class User{
         this.email = user.email
         this.foto_perfil = user.foto_perfil
         this.contrasenia = user.contrasenia
-        this.repetconstrasenia = user.repetconstrasenia
+        this.repetcontrasenia = user.repetcontrasenia
         
     }
 
@@ -39,6 +39,19 @@ class User{
 
     async delete(){
         await query("DELETE FROM usuario WHERE id=?",[this.idUsuario])
+    }
+
+    validate(){
+        let result = {sucess:true,errors:[]}
+        if(!(this.username && this.nombre && this.edad && this.email && this.contrasenia && this.repetcontrasenia)){
+            result.sucess = false
+            result.errors.push("Rellena todos los campos")
+        }
+        if(this.contrasenia!==this.repetcontrasenia){
+            result.sucess = false
+            result.errors.push("Las contraseñas no coinciden")
+        }
+        return result
     }
 }
 

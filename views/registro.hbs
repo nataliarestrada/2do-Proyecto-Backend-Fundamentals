@@ -1,10 +1,21 @@
 <form action="/registro" method="post">
-    <input type="text" name="username" placeholder="Usuario" required>
-    <input type="text" name="nombre" placeholder="Nombre Completo" required>
-    <input type="numers" name="edad" placeholder="Edad" required> 
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="text" name="foto_perfil" placeholder="url foto de perfil" required>
-    <input type="password" name="contrasenia" placeholder="Contraseña" required>
+    <input type="text" name="username" placeholder="Usuario" value="{{usuario.username}}" required>
+    <input type="text" name="nombre" placeholder="Nombre Completo" value="{{usuario.nombre}}" required>
+    <input type="numers" name="edad" placeholder="Edad" value="{{usuario.edad}}" required> 
+    <input type="email" name="email" placeholder="Email" value="{{usuario.email}}" required>
+    <input type="text" name="foto_perfil" placeholder="url foto de perfil" value="{{usuario.foto_perfil}}">
+    <input type="password" name="contrasenia" placeholder="Contraseña" value="{{usuario.contrasenia}}" required>
     <input type="password" name="repetcontrasenia" placeholder="Repite la Contraseña" required>
     <button>Guardar</button>
+
+    {{#unless validation.success}}
+        <ul>
+        {{#each validation.errors}}
+            <li >
+                {{this}}
+            </li>
+        {{/each}}
+        </ul>
+    {{/unless}}
+
 </form>
