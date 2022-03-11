@@ -28,9 +28,9 @@ class User{
             foto_perfil:this.foto_perfil,
             contrasenia:this.contrasenia
         })
-        this.idUsuario = newUser
+        this.idUsuario = newUser.id
 
-        return this.idUsuario
+        return newUser
     }
 
     async update(newUser){
@@ -41,16 +41,21 @@ class User{
         await query("DELETE FROM usuario WHERE id=?",[this.idUsuario])
     }
 
+    static async getByEmail(email){
+        return await query("SELECT * FROM usuario WHERE email=?",[email])
+    }
+
     validate(){
-        let result = {sucess:true,errors:[]}
+        let result = {success:true,errors:[]}
         if(!(this.username && this.nombre && this.edad && this.email && this.contrasenia && this.repetcontrasenia)){
-            result.sucess = false
+            result.success = false
             result.errors.push("Rellena todos los campos")
         }
         if(this.contrasenia!==this.repetcontrasenia){
-            result.sucess = false
+            result.success = false
             result.errors.push("Las contraseñas no coinciden")
         }
+
         return result
     }
 }

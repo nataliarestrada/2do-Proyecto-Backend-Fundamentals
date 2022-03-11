@@ -1,13 +1,16 @@
-
-<h1>Bienvenido</h1>
-<h1>{{username}}</h1>
-<p>Listado</p>
+<p class="font-bold">Listado</p>
 {{#if hasUsers }}
     <ul>
         {{#each usuarios}}
-            <div>
-                <img src="{{this.foto_perfil}}">
-                <p>{{this.nombre}} {{this.edad}}</p>
+            <div class="flex m-3 bg-gray-200 gap-5">
+                <figure class="w-20 h-20">
+                    <img  src="{{this.foto_perfil}}">
+                </figure>
+                <div >
+                    <h3 class="font-bold text-lg">{{this.nombre}}</h3>
+                    <p>{{this.edad}}</p>
+                    <a href="#">Alquilar</a>
+                </div>
             </div>
         {{/each}}
     </ul>

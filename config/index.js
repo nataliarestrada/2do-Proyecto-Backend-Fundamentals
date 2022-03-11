@@ -3,6 +3,7 @@ dotenv.config()
 
 
 const config = {
+    secret:process.env.SECRET,
     port:process.env.PORT,
     dbHost:process.env.DB_HOST,
     dbPort:process.env.DB_PORT,

@@ -1,8 +1,10 @@
 const path = require("path")
 const express = require("express")
-const { port } = require("./config")
+const { port, secret } = require("./config")
 const {engine} = require("express-handlebars")
+const session = require("express-session")
 /* const { DateTime } = require("luxon") */
+
 
 //Importando rutas
 const userRouter = require("./routes/usuarios")
@@ -14,6 +16,11 @@ const app = express()
 app.use(express.static(path.join(__dirname,"static")))
 //Middleware
 app.use(express.urlencoded({extended:true})) // Transforma de x-www-form-urlencoded a Object de JS
+app.use(session({
+    secret:secret,
+    resave:false,
+    saveUninitialized:false
+}))
 
 app.engine('hbs',engine({
     extname:"hbs",

@@ -5,14 +5,11 @@ class UserController{
 
     async getUserView(req,res){
         const data = await User.readAll()
-        console.log(data);
-        return res.render("home",{
-            username:"Nati", 
+        /* console.log(data); */
+        return res.render("home",{ 
             usuarios:data,
             hasUsers:data.length > 0})
     }
 }
-
-
 
 module.exports = UserController
