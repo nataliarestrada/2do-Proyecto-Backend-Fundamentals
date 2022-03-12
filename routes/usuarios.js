@@ -5,6 +5,6 @@ const router = express.Router()
 
 const userController = new UserController()
 
-router.get("/",userController.getUserView)
+router.get("/usuarios",userController.getUserView)
 
 module.exports = router

@@ -16,18 +16,19 @@ class AuthController{
         const userData=await User.getByEmail(credenciales.email)
         /* console.log(userData); */
         if(userData.length === 0){
-            return res.render("login",{validation:{
+            return res.render("login",{ validation:{
                 errors:["Usuario no registrado"]
             }})
         }
         if(userData[0].contrasenia!==credenciales.contrasenia){
-            return res.render("login",{validation:{
+            return res.render("login",{ validation:{
                 errors:["Credenciales icorrectas"]
             }})
         }
 
         req.session.loggedIn = true
-        return res.redirect("/")
+        return res.redirect("/usuarios")
+       
     }
 
     async signUp(req,res){
