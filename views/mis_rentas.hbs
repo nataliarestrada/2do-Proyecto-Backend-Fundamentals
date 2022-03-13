@@ -1,0 +1,24 @@
+<p class="font-bold">Listado de Mis Rentas {{session.username}}</p>
+{{#if hasBook }}
+    <ul>
+        {{#each rentas}}
+            <div class="flex m-3 bg-gray-200 gap-5">
+                <div >
+                    <h3 class="font-bold text-lg">{{this.id}}</h3>
+                    <p>id_usuario: {{this.id_uduario}}</p> 
+                    <p>id_libro: {{this.id_libro}}</p>
+                    <p>fecha_inicio: {{this.fecha_inicio}}</p>
+                    <p>fecha_fin: {{this.fecha_fin}}</p>
+                    <p>estado: {{this.estado}}</p>
+                </div>
+                <div class="flex items-end ml-10">
+                    <a href="#" class="rounded-md m-1 p-2 text-white bg-orange-300">Devolver</a>
+                    
+                </div>
+                
+            </div>
+        {{/each}}
+    </ul>
+{{else}}
+    <p class="text-red-500">Ninguna Renta registrado</p>
+{{/if}}

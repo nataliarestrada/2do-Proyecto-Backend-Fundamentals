@@ -1,0 +1,24 @@
+<div class="flex flex-col items-center">
+    <h2 class="text-lg text-blue-500">Editar Libro</h2>
+    <form class="flex flex-col p-5 w-1/4 bg-gray-100" action="/editar_libro" method="post">
+        <input class="rounded-md m-1" type="number" name="id" placeholder="Id" value="{{libro.id}}" required>
+        <input class="rounded-md m-1" type="text" name="titulo" placeholder="Titulo" value="{{libro.titulo}}" required>
+        <input class="rounded-md m-1" type="text" name="autor" placeholder="Autor" value="{{libro.autor}}" required>
+        <input class="rounded-md m-1" type="text" name="portada" placeholder="url foto de portada" value="{{libro.portada}}" required>
+        <input class="rounded-md m-1" type="number" name="precio" placeholder="Precio" value="{{libro.precio}}" required> 
+        <input class="rounded-md m-1" type="text" name="estado" placeholder="Estado" value="{{libro.estado}}" required disabled>
+        <input class="rounded-md m-1" type="number" name="id_usuario" placeholder="id del usuario" value="{{libro.id_usuario}}" required disabled>
+        <button class="rounded-md m-1 p-2 text-white bg-blue-400" >Guardar</button>
+
+        {{#unless validation.success}}
+            <ul>
+                {{#each validation.errors}}
+                    <li >
+                        {{this}}
+                    </li>
+                {{/each}}
+            </ul>
+        {{/unless}}
+
+    </form>
+</div>

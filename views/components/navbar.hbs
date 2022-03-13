@@ -1,10 +1,21 @@
 <nav class="bg-blue-500 text-white p-5">
     <ul class="flex gap-10">
-        <li><a href="/">Inicio Sesion</a></li>
-        {{!-- <li><a href="/registro">Registrar</a></li> --}}
-        <li><a href="/usuarios">Usuarios</a></li>
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 1</a></li>
+
+        {{#if session.loggedIn}}
+            <li><a href="/libros">Libros para Rentar</a></li>
+            <li><a href="/mis_libros">Mis Libros</a></li>
+            <li><a href="/mis_rentas">Mis Rentas</a></li>
+            <li><a href="/cerrar_sesion">Cerrar Sesion</a></li>
+
+        {{else}}
+            <li><a href="/">Inicio Sesion</a></li>
+            <li><a href="/usuarios">Usuarios</a></li>
+        {{/if}}
+        
+        {{!-- <li><a href="/libros">Libros para Rentar</a></li>
+        <li><a href="/mis_libros">Mis Libros</a></li>
+        <li><a href="#">Mis Rentas</a></li> --}}
+        
     </ul>
 </nav>
 

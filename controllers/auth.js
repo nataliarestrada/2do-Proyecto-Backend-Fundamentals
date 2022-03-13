@@ -7,14 +7,19 @@ class AuthController{
     }
 
     getSignUpView(req,res){
-        return res.render("registro")
+        return res.render("registro_usuario")
+    }
+
+    logOut(req,res){
+        req.session.destroy()
+        return res.redirect("/")
     }
 
     async logIn(req,res){
         const credenciales = req.body
         /* console.log(credenciales); */
         const userData=await User.getByEmail(credenciales.email)
-        /* console.log(userData); */
+        console.log(userData);
         if(userData.length === 0){
             return res.render("login",{ validation:{
                 errors:["Usuario no registrado"]
@@ -25,9 +30,11 @@ class AuthController{
                 errors:["Credenciales icorrectas"]
             }})
         }
-
+         /*---------Session Info---------*/
         req.session.loggedIn = true
-        return res.redirect("/usuarios")
+        req.session.idUsuario = userData[0].id
+        req.session.username = userData[0].username
+        return res.redirect("/libros")
        
     }
 
@@ -42,7 +49,7 @@ class AuthController{
             return res.redirect("/")
         }
         
-        return res.render("registro",{validation,usuario:newUser})
+        return res.render("registro_usuario",{validation,usuario:newUser})
     }
 }
 

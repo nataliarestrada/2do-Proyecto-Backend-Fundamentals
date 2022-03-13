@@ -1,3 +1,9 @@
+{{#if session.loggedIn}}
+    <h1>Bienvenido {{session.username}}</h1>
+{{else}}
+    <h1>Inicia Sesion</h1>
+{{/if}}
+
 <p class="font-bold">Listado</p>
 {{#if hasUsers }}
     <ul>
@@ -8,8 +14,9 @@
                 </figure>
                 <div >
                     <h3 class="font-bold text-lg">{{this.nombre}}</h3>
+                    <p>{{this.email}}</p>
                     <p>{{this.edad}}</p>
-                    <a href="#">Alquilar</a>
+                    
                 </div>
             </div>
         {{/each}}

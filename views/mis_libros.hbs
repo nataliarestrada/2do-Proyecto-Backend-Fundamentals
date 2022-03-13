@@ -1,0 +1,29 @@
+<a href="/registro_libro">Registrar Libro</a>
+<p class="font-bold">Listado de Mis Libros {{session.username}}</p>
+{{#if hasBook }}
+    <ul>
+        {{#each libros}}
+            <div class="flex m-3 bg-gray-200 gap-5">
+                <figure class="w-20 h-20">
+                    <img  src="{{this.portada}}">
+                </figure>
+                <div >
+                    <h3 class="font-bold text-lg">{{this.titulo}}</h3>
+                    <p>{{this.autor}}</p> 
+                    <p>{{this.precio}}</p>
+                    <p>{{this.estado}}</p>
+                    <p>{{this.id_usuario}}</p>
+                </div>
+                <div class="flex items-end ml-10">
+                    <a href="/editar_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-orange-300">Editar</a>
+                    <a href="/mis_libros" class="rounded-md m-1 p-2 text-white bg-red-400" onclick="DeleteBook({{this.id}})">Eliminar</a>
+                    {{!-- <button class="rounded-md m-1 p-2 text-white bg-orange-300">Modificar</button>
+                    <button class="rounded-md m-1 p-2 text-white bg-red-400" onclick="DeleteBook({{this.id}})">Eliminar</button> --}}
+                </div>
+                
+            </div>
+        {{/each}}
+    </ul>
+{{else}}
+    <p class="text-red-500">Ningun Libro registrado</p>
+{{/if}}

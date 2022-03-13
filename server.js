@@ -9,6 +9,9 @@ const session = require("express-session")
 //Importando rutas
 const userRouter = require("./routes/usuarios")
 const authRouter = require("./routes/auth")
+const bookRouter = require("./routes/libros")
+const addSessionToTemplate = require("./middlewares/addSessionToTemplate")
+const rentaRouter = require("./routes/renta")
 
 
 const app = express()
@@ -21,6 +24,7 @@ app.use(session({
     resave:false,
     saveUninitialized:false
 }))
+app.use(addSessionToTemplate)
 
 app.engine('hbs',engine({
     extname:"hbs",
@@ -38,6 +42,8 @@ app.set("views","views")
 
 app.use(userRouter)
 app.use(authRouter)
+app.use(bookRouter)
+app.use(rentaRouter)
 
 
 
