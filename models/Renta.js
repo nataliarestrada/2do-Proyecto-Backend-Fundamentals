@@ -34,6 +34,18 @@ class Renta{
         return await query("UPDATE libro SET estado='RENTADO' WHERE id=?" ,[id])
     }
 
+    static async devolver(id){
+        await query("UPDATE renta SET estado='INACTIVO' WHERE id=?" ,[id])
+    }
+
+    static async getIdLibro(id){
+        return await query("SELECT * FROM renta WHERE id=?",[id])
+    }
+
+    static async actualizarLibroEstado(id){
+        return await query("UPDATE libro SET estado='DISPONIBLE' WHERE id=?" ,[id])
+    }
+
 
     validate(){
         let result = {success:true,errors:[]}

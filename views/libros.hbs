@@ -14,15 +14,15 @@
                     <p>{{this.id_usuario}}</p>
                 </div>
                 
-                <div class="flex items-end ml-10">
-                    <a href="/rentar_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-blue-400">Rentar</a>
-                </div>
-                
-                {{!-- {{#ifCond this.estado desponible}} 
-                     <a href="/rentar_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-blue-400">Rentar</a>
+                {{#if (igual this.estado ../disponible)}}
+                     <div class="flex items-end ml-10">
+                        <a href="/rentar_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-blue-400">Rentar</a>
+                    </div>
                 {{else}} 
-                    <p>no disponible</p>
-                {{/ifCond}} --}}
+                    <div class="flex items-end ml-10">
+                        <p>no disponible</p>
+                    </div>
+                {{/if}}
                 
             </div>
         {{/each}}

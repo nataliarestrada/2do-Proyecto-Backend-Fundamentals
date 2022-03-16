@@ -1,3 +1,4 @@
+const { redirect } = require("express/lib/response")
 const Renta= require("../models/Renta")
 
 class RentaController{
@@ -5,9 +6,15 @@ class RentaController{
     async getRentaView(req,res){
         const data = await Renta.readAll(req.session.idUsuario)
         /* console.log(data); */
+        const fecha = Date.now();
+        const hoy = new Date(fecha);
+        console.log(hoy.toUTCString())
         return res.render("mis_rentas",{
             rentas:data,
-            hasBook:data.length > 0})
+            hasBook:data.length > 0,
+            inactivo: "INACTIVO",
+            fecha_hoy: hoy.toUTCString()
+         })
     }
 
     getSignUpView(req,res){
@@ -29,6 +36,15 @@ class RentaController{
             return res.redirect("/mis_rentas")
         }
         return res.render("rentar_libro",{validation,renta:newRenta})
+
+    }
+
+    async returnBook(req,res){
+        const idrenta= req.params.id
+        const rentaData = await Renta.getIdLibro(idrenta)
+        await Renta.devolver(idrenta)
+        await Renta.actualizarLibroEstado(rentaData[0].id_libro)
+        res.redirect("/mis_rentas")
 
     }
 }

@@ -8,13 +8,32 @@
                     <p>id_usuario: {{this.id_uduario}}</p> 
                     <p>id_libro: {{this.id_libro}}</p>
                     <p>fecha_inicio: {{this.fecha_inicio}}</p>
-                    <p>fecha_fin: {{this.fecha_fin}}</p>
+                    <p>fecha_fin: {{formatDate this.fecha_fin}}</p>
+                    <p>fecha hoy:{{formatDate ../fecha_hoy}}</p>
+                    <p class="text-blue-500">{{controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy)}}</p>
                     <p>estado: {{this.estado}}</p>
                 </div>
-                <div class="flex items-end ml-10">
-                    <a href="#" class="rounded-md m-1 p-2 text-white bg-orange-300">Devolver</a>
-                    
-                </div>
+
+                {{#if (igual this.estado ../inactivo)}}
+                    <div class="flex items-end ml-10">
+                        <p>Libro devuelto</p>
+                    </div>
+                {{else}}
+                    <div class="flex items-end ml-10">
+                        <a href="/return_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-orange-300">Devolver</a>
+                        
+                        {{!-- {{#if (controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy))}}
+                            <p class="text-red-400">Renta vencida! Devuelve tu libro</p>
+                        {{else}}
+                            <p class="text-green-400">Renta activa</p>
+                        {{if}} --}}
+
+                    </div>
+
+                {{/if}}
+
+
+                
                 
             </div>
         {{/each}}

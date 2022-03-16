@@ -6,7 +6,7 @@
         <input class="rounded-md m-1" type="number" name="id_libro" placeholder="Id libro" value="{{id_libro}}" required readonly>
         <input class="rounded-md m-1" type="date" name="fecha_inicio" placeholder="fecha inicio" value="{{renta.fecha_inicio}}" required>
         <input class="rounded-md m-1" type="date" name="fecha_fin" placeholder="fecha fin" value="{{renta.fecha_fin}}" >
-        <input class="rounded-md m-1" type="text" name="estado" placeholder="Estado" value="ACTIVO" required >
+        <input class="rounded-md m-1" type="text" name="estado" placeholder="Estado" value="ACTIVO" required readonly>
         <button class="rounded-md m-1 p-2 text-white bg-blue-400" >Guardar</button>
 
         {{#unless validation.success}}
