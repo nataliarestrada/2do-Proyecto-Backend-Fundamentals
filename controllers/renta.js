@@ -1,19 +1,17 @@
-const { redirect } = require("express/lib/response")
 const Renta= require("../models/Renta")
 
 class RentaController{
 
     async getRentaView(req,res){
         const data = await Renta.readAll(req.session.idUsuario)
-        /* console.log(data); */
+        //console.log(data);
         const fecha = Date.now();
         const hoy = new Date(fecha);
-        console.log(hoy.toUTCString())
         return res.render("mis_rentas",{
             rentas:data,
             hasBook:data.length > 0,
             inactivo: "INACTIVO",
-            fecha_hoy: hoy.toUTCString()
+            fecha_hoy: hoy
          })
     }
 

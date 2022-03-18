@@ -12,7 +12,8 @@ class Renta{
 
     //El metodo puede ser utilizado sin crear una instancia
     static async readAll(id){
-        return await query("SELECT * FROM renta WHERE id_usuario=?",[id])
+        //return await query("SELECT * FROM renta WHERE id_usuario=?",[id])
+        return await query("SELECT renta.id, renta.id_usuario, renta.id_libro, renta.fecha_inicio, renta.fecha_fin, renta.estado, libro.titulo, libro.portada, libro.precio FROM renta, usuario, libro WHERE renta.id_usuario = usuario.id and renta.id_libro = libro.id AND usuario.id = ? ORDER BY renta.estado",[id])
     }
 
     async save(){

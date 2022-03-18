@@ -9,12 +9,16 @@
 </head>
 <body>
 
-    <header>
-        <p>Holaa</p>
+    <header class="h-20 flex items-center justify-between pr-1 pl-3 bg-blue-400">
+        <h1 class="text-white font-bold">Rental App</h1>
+            {{#if session.loggedIn}}
+                <div class="flex items-center gap-4">
+                    <h1 class="text-white font-semibold">{{session.username}}</h1>
+                    <img class="w-20 rounded-full" src="{{session.foto_perfil}}" alt="">
+                </div>
+            {{/if}}
     </header>
-    {{!-- {{#if logactivo}}
-        {{> navbar}}
-    {{/if}} --}}
+  
     {{> navbar}}
 
     {{{body}}}

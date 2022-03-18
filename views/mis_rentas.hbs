@@ -3,12 +3,22 @@
     <ul>
         {{#each rentas}}
             <div class="flex m-3 bg-gray-200 gap-5">
+                <div class="m-3 bg-gray-200 gap-5">
+                    <h3 class="font-bold text-lg">Libro</h3>
+                    <figure class="w-20">
+                        <img  src="{{this.portada}}">
+                    </figure>
+                    <h3 class="font-bold text-lg">{{this.titulo}}</h3>
+                    <p>{{this.precio}}</p>
+                </div>
                 <div >
-                    <h3 class="font-bold text-lg">{{this.id}}</h3>
-                    <p>id_usuario: {{this.id_uduario}}</p> 
+                    <h3 class="font-bold text-lg">Info Renta</h3>
+                    <p>id: {{this.id}}</p> 
+                    <p>id_usuario: {{this.id_usuario}}</p> 
                     <p>id_libro: {{this.id_libro}}</p>
-                    <p>fecha_inicio: {{this.fecha_inicio}}</p>
+                    <p>fecha_inicio: {{formatDate this.fecha_inicio}}</p>
                     <p>fecha_fin: {{formatDate this.fecha_fin}}</p>
+                    
                     <p>fecha hoy:{{formatDate ../fecha_hoy}}</p>
                     <p class="text-blue-500">{{controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy)}}</p>
                     <p>estado: {{this.estado}}</p>
@@ -19,21 +29,17 @@
                         <p>Libro devuelto</p>
                     </div>
                 {{else}}
-                    <div class="flex items-end ml-10">
-                        <a href="/return_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-orange-300">Devolver</a>
-                        
-                        {{!-- {{#if (controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy))}}
-                            <p class="text-red-400">Renta vencida! Devuelve tu libro</p>
+                    <div class="flex flex-col justify-end items-start ml-10">
+                        {{#if (controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy))}}
+                            <p class="text-red-500 mb-4 ">⚠ Renta vencida! {{formatHour this.fecha_fin}}. Devuelve tu libro</p>
                         {{else}}
-                            <p class="text-green-400">Renta activa</p>
-                        {{if}} --}}
-
+                            <p class="text-green-400 mb-4">{{entrega ../fecha_hoy this.fecha_fin}} para devolver el libro</p>
+                        {{/if}}
+                    
+                        <a href="/return_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-orange-300">Devolver</a>
                     </div>
 
-                {{/if}}
-
-
-                
+                {{/if}}  
                 
             </div>
         {{/each}}

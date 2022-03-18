@@ -34,6 +34,7 @@ class AuthController{
         req.session.loggedIn = true
         req.session.idUsuario = userData[0].id
         req.session.username = userData[0].username
+        req.session.foto_perfil = userData[0].foto_perfil
         return res.redirect("/libros")
        
     }
