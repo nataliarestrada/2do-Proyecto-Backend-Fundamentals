@@ -16,6 +16,9 @@ class Book{
     static async readAll(id){
         return await query("SELECT * FROM libro WHERE id_usuario!=?",[id])
     }
+    static async buscarlibro(id_usuario, titulo){
+        return await query(`SELECT * FROM libro WHERE id_usuario!=? AND titulo LIKE "%` +titulo+ `%"`,[id_usuario])
+    }
 
     static async read(id_usuario){
         return await query("SELECT * FROM libro WHERE id_usuario=?",[id_usuario])

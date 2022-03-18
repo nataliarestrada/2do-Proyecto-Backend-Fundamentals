@@ -12,6 +12,18 @@ class BookController{
         })
     }
 
+    async getSearchBookView(req,res){
+        const titulo = req.body
+        console.log(titulo)
+        const data = await Book.buscarlibro(req.session.idUsuario,req.body.titulo)
+        console.log(data)
+        return res.render("libros",{
+            libros:data,
+            hasBook:data.length > 0,
+            disponible:"DISPONIBLE"
+        })
+    }
+
     async getBookUserView(req,res){
         const data = await Book.read(req.session.idUsuario)
         /* console.log(data); */

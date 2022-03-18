@@ -1,3 +1,12 @@
+<div class="flex flex-col items-end w-full pr-2 gap-1">
+    <form action="/buscar_libro" method="post">
+        <input class="rounded-md m-1 w-80 border border-solid border-gray-400" type="text" name="titulo" placeholder="Ingrese el titulo del libro que desea buscar" required>
+        <button class="rounded-2xl m-1 p-2 text-white bg-blue-400" >Buscar</button>
+    </form>
+    <a class="rounded-md m-1 p-2 text-white bg-violet-400" href="/libros">Mostrar Todo</a>
+
+</div>
+
 <p class="font-bold">Listado Libros</p>
 {{#if hasBook }}
     <ul>

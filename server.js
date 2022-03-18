@@ -51,6 +51,7 @@ app.engine('hbs',engine({
         },
         formatHour:function(date){
             const newDate = DateTime.fromJSDate(date)
+            
 
             const diff = newDate.diffNow(["minutes","hours","days"]).toObject()
             if(diff.days<0){

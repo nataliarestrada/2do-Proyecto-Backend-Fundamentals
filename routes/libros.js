@@ -6,6 +6,7 @@ const router = express.Router()
 const bookController = new BookController()
 
 router.get("/libros",bookController.getBookView)
+router.post("/buscar_libro",bookController.getSearchBookView)
 router.get("/mis_libros", bookController.getBookUserView)
 router.get("/registro_libro", bookController.getSignUpView)
 router.post("/registro_libro", bookController.signUp)
