@@ -5,8 +5,8 @@
         <input class="rounded-md m-1" type="text" name="autor" placeholder="Autor" value="{{libro.autor}}" required>
         <input class="rounded-md m-1" type="text" name="portada" placeholder="url foto de portada" value="{{libro.portada}}" required>
         <input class="rounded-md m-1" type="number" name="precio" placeholder="Precio" value="{{libro.precio}}" required> 
-        <input class="rounded-md m-1" type="text" name="estado" value="DISPONIBLE" required disabled>
-        <input class="rounded-md m-1" type="number" name="id_usuario" value="{{session.idUsuario}}" required disabled>
+        <input class="rounded-md m-1" type="text" name="estado" value="DISPONIBLE" required readonly>
+        <input class="rounded-md m-1" type="number" name="id_usuario" value="{{session.idUsuario}}" required readonly>
         <button class="rounded-md m-1 p-2 text-white bg-blue-400" >Guardar</button>
 
         {{#unless validation.success}}

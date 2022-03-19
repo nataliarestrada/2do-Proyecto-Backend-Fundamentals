@@ -33,9 +33,10 @@
                         {{#if (controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy))}}
                             <p class="text-red-500 mb-4 ">⚠ Renta vencida! {{formatHour this.fecha_fin}}. Devuelve tu libro</p>
                         {{else}}
-                            <p class="text-green-400 mb-4">{{entrega ../fecha_hoy this.fecha_fin}} para devolver el libro</p>
+                            <p class="text-green-400 mb-4">🕑 {{entrega ../fecha_hoy this.fecha_fin}} para devolver el libro</p>
                         {{/if}}
                     
+                        {{!-- <a href="/return_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-orange-300">Devolver</a> --}}
                         <a href="/return_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-orange-300">Devolver</a>
                     </div>
 

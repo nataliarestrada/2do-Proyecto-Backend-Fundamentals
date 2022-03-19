@@ -12,7 +12,6 @@ const authRouter = require("./routes/auth")
 const bookRouter = require("./routes/libros")
 const addSessionToTemplate = require("./middlewares/addSessionToTemplate")
 const rentaRouter = require("./routes/renta")
-const { log } = require("console")
 
 
 const app = express()
@@ -78,8 +77,17 @@ app.engine('hbs',engine({
             }else if(diff.minutes>0){
                 return `Faltan ${Number.parseInt(diff.minutes)} minutos`
             }
-
-        }
+        },
+        // calificacion: async function(id_libro){
+        //     const libro_calificacion = await Book.calificacion(id_libro)
+        //     console.log(libro_calificacion)
+        //     let promedio = 0
+        //     const total= libro_calificacion.length
+        //     for (var i = 0; i <= total; i++) {
+        //         promedio = promedio + libro_calificacion[i].calificacion
+        //     }
+        //     return promedio/total
+        // }
     }
 }))
 app.set("view engine",'hbs')

@@ -1,20 +1,25 @@
 const User = require("../models/Usuarios")
 
 class AuthController{
+
+    // vista del login
     getLoginView(req,res){
         console.log(req.session);
         return res.render("login")
     }
 
+    //vista del registro de usuarios
     getSignUpView(req,res){
         return res.render("registro_usuario")
     }
 
+    //cerrar sesion
     logOut(req,res){
         req.session.destroy()
         return res.redirect("/")
     }
 
+    //iniciar sesion
     async logIn(req,res){
         const credenciales = req.body
         /* console.log(credenciales); */
@@ -39,6 +44,7 @@ class AuthController{
        
     }
 
+    //registrar nuevo usuario
     async signUp(req,res){
      
         const newUser = new User(req.body)
