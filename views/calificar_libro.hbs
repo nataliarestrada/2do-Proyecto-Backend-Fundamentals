@@ -33,8 +33,23 @@
 
         <div class="flex flex-col justify-end items-start ml-10">
             <form action="/return_libro" method="post">
-                <input class="rounded-md m-1" type="number" name="id" placeholder="Id" value="{{this.id}}" required readonly>
-                <input class="rounded-md m-1" type="number" name="calificacion" placeholder="estrellas" value="{{this.calificacion}}">
+                <input class="rounded-md m-1" type="number" name="id" placeholder="Id" value="{{this.id}}" required readonly style="display:none">
+                {{!-- <input class="rounded-md m-1" type="number" name="calificacion" placeholder="estrellas" value="{{this.calificacion}}"> --}}
+
+                <label for="start"><i class="uil uil-start icon"></i> Calification</label>
+                <div class="star-widget">
+                    <input type="radio" name="rate-5" id="rate-5">
+                    <label for="rate-5" class="fas fa-star"></label>
+                    <input type="radio" name="rate-4" id="rate-4">
+                    <label for="rate-4" class="fas fa-star"></label>
+                    <input type="radio" name="rate-3" id="rate-3">
+                    <label for="rate-3" class="fas fa-star"></label>
+                    <input type="radio" name="rate-2" id="rate-2">
+                    <label for="rate-2" class="fas fa-star"></label>
+                    <input type="radio" name="rate-1" id="rate-1">
+                    <label for="rate-1" class="fas fa-star"></label>
+                </div>
+
                 <button class="rounded-md m-1 p-2 text-white bg-orange-300">Pagar</button>
             </form>
         </div>

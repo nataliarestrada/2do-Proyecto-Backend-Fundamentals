@@ -11,30 +11,37 @@
 {{#if hasBook }}
     <ul>
         {{#each libros}}
-            <div class="flex m-3 bg-gray-200 gap-5">
-                <figure class="w-20 h-20">
-                    <img  src="{{this.portada}}">
-                </figure>
-                <div >
-                    <h3 class="font-bold text-lg">{{this.titulo}}</h3>
-                    <p>{{this.autor}}</p>
-                    <p>{{this.precio}}</p>
-                    <p>{{this.estado}}</p>
-                    <p>{{this.id_usuario}}</p>
-                    {{!-- <p>Calificacion promedio{{calificacion this.id}}</p> --}}
+            {{#if (igual this.id_usuario session.idUsuario)}}
+
+            {{else}}
+                <div class="flex m-3 bg-gray-200 gap-5">
+                    <figure class="w-20 h-20">
+                        <img  src="{{this.portada}}">
+                    </figure>
+                    <div >
+                        <p>id:{{this.id}}</p>
+                        <h3 class="font-bold text-lg">{{this.titulo}}</h3>
+                        <p>{{this.autor}}</p>
+                        <p>{{this.precio}}</p>
+                        <p>{{this.estado}}</p>
+                        <p>{{this.id_usuario}}</p>
+                        <p>Calificacion: {{formatNum this.rating}}</p>
+                        {{!-- <p>Calificacion promedio{{calificacion this.id}}</p> --}}
+                    </div>
+                    
+                    {{#if (igual this.estado ../disponible)}}
+                        <div class="flex items-end ml-10">
+                            <a href="/rentar_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-blue-400">Rentar</a>
+                        </div>
+                    {{else}} 
+                        <div class="flex items-end ml-10">
+                            <p>no disponible</p>
+                        </div>
+                    {{/if}}
+                    
                 </div>
-                
-                {{#if (igual this.estado ../disponible)}}
-                     <div class="flex items-end ml-10">
-                        <a href="/rentar_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-blue-400">Rentar</a>
-                    </div>
-                {{else}} 
-                    <div class="flex items-end ml-10">
-                        <p>no disponible</p>
-                    </div>
-                {{/if}}
-                
-            </div>
+            {{/if}}
+
         {{/each}}
     </ul>
 {{else}}

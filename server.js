@@ -78,16 +78,13 @@ app.engine('hbs',engine({
                 return `Faltan ${Number.parseInt(diff.minutes)} minutos`
             }
         },
-        // calificacion: async function(id_libro){
-        //     const libro_calificacion = await Book.calificacion(id_libro)
-        //     console.log(libro_calificacion)
-        //     let promedio = 0
-        //     const total= libro_calificacion.length
-        //     for (var i = 0; i <= total; i++) {
-        //         promedio = promedio + libro_calificacion[i].calificacion
-        //     }
-        //     return promedio/total
-        // }
+        formatNum:function(num){
+            
+            const newNum = Number(num)
+            const aux = newNum.toFixed(2)
+            return aux
+
+        }
     }
 }))
 app.set("view engine",'hbs')

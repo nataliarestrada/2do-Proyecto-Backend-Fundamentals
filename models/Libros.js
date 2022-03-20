@@ -14,8 +14,9 @@ class Book{
 
     //devuelve todos los libros exepto los que son del usuario que se logeo
     static async readAll(id){
-        return await query("SELECT * FROM libro WHERE id_usuario!=?",[id])
-        //return await query("SELECT * FROM libro")
+
+        //return await query("SELECT * FROM libro WHERE id_usuario!=?",[id])
+        return await query("SELECT * FROM libro LEFT JOIN (SELECT id_libro, SUM(calificacion) / COUNT(id) as rating FROM renta WHERE calificacion IS NOT NULL GROUP BY id_libro) as table1 ON libro.id = table1.id_libro ORDER BY table1.rating DESC")
     }
     
     // static async rentaLibro(id){

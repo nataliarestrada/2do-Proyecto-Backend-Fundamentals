@@ -16,6 +16,8 @@ class RentaController{
         })
     }
 
+    //SELECT * FROM libro LEFT JOIN (SELECT id_libro, SUM(calificacion) / COUNT(id) as rating FROM renta WHERE calificacion IS NOT NULL GROUP BY id_libro) as table1 ON libro.id = table1.id_libro ORDER BY table1.rating DESC;
+
     //vista para devolver el libro y registrar la calificacion si quiere
     async getReviewBookView(req,res){
         const idrenta = req.params.id
@@ -33,8 +35,32 @@ class RentaController{
     //devuelvo el libro, cambio el estado de la renta, guardo la calificacion,cambio el estado del libro
     async returnBook(req,res){
         const data = req.body
+        let calificacion = 0
         //console.log(data)
-        await Renta.devolverCalificarLibro(data.id,data.calificacion)
+
+        
+        if (req.body.hasOwnProperty("rate-5")){
+            calificacion = 5
+        } 
+        else if (req.body.hasOwnProperty("rate-4")) {
+            calificacion = 4
+        }
+        else if (req.body.hasOwnProperty("rate-3")) {
+            calificacion = 3
+        }
+        else if (req.body.hasOwnProperty("rate-2")) {
+            calificacion = 2
+        }
+        else if (req.body.hasOwnProperty("rate-1")) {
+            calificacion = 1
+        }
+        else{
+            calificacion = null
+        }
+        //console.log(calificacion);
+
+
+        await Renta.devolverCalificarLibro(data.id,calificacion)
         const rentaData = await Renta.getIdLibro(data.id)
         //await Renta.devolver(data.id)
         await Renta.actualizarLibroEstado(rentaData[0].id_libro)
