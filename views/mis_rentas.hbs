@@ -1,4 +1,4 @@
-<p class="font-bold">Listado de Mis Rentas {{session.username}}</p>
+<p class="font-bold pt-5">Listado de Mis Rentas</p>
 {{#if hasBook }}
     <ul>
         {{#each rentas}}
@@ -9,19 +9,19 @@
                         <img  src="{{this.portada}}">
                     </figure>
                     <h3 class="font-bold text-lg">{{this.titulo}}</h3>
-                    <p>{{this.precio}}</p>
+                    <p>Precio: ${{this.precio}}</p>
                 </div>
                 <div >
                     <h3 class="font-bold text-lg">Info Renta</h3>
-                    <p>id: {{this.id}}</p> 
-                    <p>id_usuario: {{this.id_usuario}}</p> 
-                    <p>id_libro: {{this.id_libro}}</p>
-                    <p>fecha_inicio: {{formatDate this.fecha_inicio}}</p>
-                    <p>fecha_fin: {{formatDate this.fecha_fin}}</p>
+                    {{!-- <p>id: {{this.id}}</p>  --}}
+                    {{!-- <p>id_usuario: {{this.id_usuario}}</p> 
+                    <p>id_libro: {{this.id_libro}}</p> --}}
+                    <p>fecha de renta: {{formatDate this.fecha_inicio}}</p>
+                    <p>fecha de devolucion: {{formatDate this.fecha_fin}}</p>
                     
-                    <p>fecha hoy:{{formatDate ../fecha_hoy}}</p>
-                    <p class="text-blue-500">{{controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy)}}</p>
-                    <p>estado: {{this.estado}}</p>
+                    {{!-- <p>fecha hoy:{{formatDate ../fecha_hoy}}</p> --}}
+                    {{!-- <p class="text-blue-500">{{controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy)}}</p>
+                    <p>estado: {{this.estado}}</p> --}}
                 </div>
 
                 {{#if (igual this.estado ../inactivo)}}

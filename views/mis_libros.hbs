@@ -1,18 +1,19 @@
-<a href="/registro_libro">Registrar Libro</a>
-<p class="font-bold">Listado de Mis Libros {{session.username}}</p>
+<div class="pt-5"></div>
+<a class="rounded-md m-1 p-2 text-white bg-blue-500" href="/registro_libro">Registrar Libro</a>
+<p class="font-bold pt-5" style="font-size: 20px;" >Listado de Mis Libros</p>
 {{#if hasBook }}
     <ul>
         {{#each libros}}
-            <div class="flex m-3 bg-gray-200 gap-5">
+            <div class="flex m-3 bg-gray-200 gap-5 h-32">
                 <figure class="w-20 h-20">
                     <img  src="{{this.portada}}">
                 </figure>
                 <div >
                     <h3 class="font-bold text-lg">{{this.titulo}}</h3>
-                    <p>{{this.autor}}</p> 
-                    <p>{{this.precio}}</p>
-                    <p>{{this.estado}}</p>
-                    <p>{{this.id_usuario}}</p>
+                    <p>Autor: {{this.autor}}</p> 
+                    <p>Precio: ${{this.precio}} $</p>
+                    {{!-- <p>{{this.estado}}</p>
+                    <p>{{this.id_usuario}}</p> --}}
                 </div>
                 <div class="flex items-end ml-10">
                     <a href="/editar_libro/{{this.id}}" class="rounded-md m-1 p-2 text-white bg-orange-300">Editar</a>

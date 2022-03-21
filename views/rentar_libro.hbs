@@ -1,12 +1,12 @@
-<div class="flex flex-col items-center">
-    <h2 class="text-lg text-blue-500">Rentar Libro</h2>
+<div class="flex flex-col items-center pt-5">
+    <h2 class="text-lg text-blue-500 pb-4" style="font-size: 20px;">Rentar Libro</h2>
     <form class="flex flex-col p-5 w-1/4 bg-gray-100" action="/rentar_libro" method="post">
         {{!-- <input class="rounded-md m-1" type="number" name="id" placeholder="Id" value="{{renta.id}}" required> --}}
-        <input class="rounded-md m-1" type="number" name="id_usuario" placeholder="Id usuario" value="{{id_usuario}}" required style="display:none">
-        <input class="rounded-md m-1" type="number" name="id_libro" placeholder="Id libro" value="{{id_libro}}" required style="display:none">
+        <input class="rounded-md m-1" type="number" name="id_usuario" placeholder="Id usuario" value="{{id_usuario}}" required readonly style="display:none">
+        <input class="rounded-md m-1" type="number" name="id_libro" placeholder="Id libro" value="{{id_libro}}" required readonly style="display:none">
         <input class="rounded-md m-1" type="date" name="fecha_inicio" placeholder="fecha inicio" value="{{renta.fecha_inicio}}" required>
-        <input class="rounded-md m-1" type="date" name="fecha_fin" placeholder="fecha fin" value="{{renta.fecha_fin}}">
-        <input class="rounded-md m-1" type="text" name="estado" placeholder="Estado" value="ACTIVO" required style="display:none">
+        <input class="rounded-md m-1" type="date" name="fecha_fin" placeholder="fecha fin" value="{{renta.fecha_fin}}" required>
+        <input class="rounded-md m-1" type="text" name="estado" placeholder="Estado" value="ACTIVO" required readonly style="display:none">
         <button class="rounded-md m-1 p-2 text-white bg-blue-400" >Guardar</button>
 
         {{#unless validation.success}}

@@ -7,36 +7,35 @@
                 <img  src="{{this.portada}}">
             </figure>
                 <h3 class="font-bold text-lg">{{this.titulo}}</h3>
-                <p>{{this.precio}}</p>
+                <p>Precio: ${{this.precio}}</p>
         </div>
-        <div >
+
+        <div class="flex flex-col justify-center">
             <h3 class="font-bold text-lg">Info Renta</h3>
-            <p>id: {{this.id}}</p> 
+            {{!-- <p>id: {{this.id}}</p> 
             <p>id_usuario: {{this.id_usuario}}</p> 
-            <p>id_libro: {{this.id_libro}}</p>
-            <p>fecha_inicio: {{formatDate this.fecha_inicio}}</p>
-            <p>fecha_fin: {{formatDate this.fecha_fin}}</p>
+            <p>id_libro: {{this.id_libro}}</p> --}}
+            <p>fecha de renta: {{formatDate this.fecha_inicio}}</p>
+            <p>fecha de devolucion: {{formatDate this.fecha_fin}}</p>
                     
-            <p>fecha hoy:{{formatDate ../fecha_hoy}}</p>
+            {{!-- <p>fecha hoy:{{formatDate ../fecha_hoy}}</p>
             <p class="text-blue-500">{{controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy)}}</p>
-            <p>estado: {{this.estado}}</p>
-        </div>
-
-        <div class="flex flex-col justify-end items-start ml-10">
-            {{#if (controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy))}}
+            <p>estado: {{this.estado}}</p> --}}
+            <div class="flex flex-col justify-end items-start ml-10">
+                {{#if (controlDate (formatDate this.fecha_fin) (formatDate ../fecha_hoy))}}
                     <p class="text-red-500 mb-4 ">⚠ Renta vencida! {{formatHour this.fecha_fin}}. Debes pagar un 10% de recargo</p>
-            {{else}}
+                {{else}}
                     <p class="text-green-400 mb-4">🕑 {{entrega ../fecha_hoy this.fecha_fin}} para devolver el libro</p>
-            {{/if}}
-                    
+                {{/if}}  
+            </div>
         </div>
 
-        <div class="flex flex-col justify-end items-start ml-10">
+        <div class="flex flex-col justify-end ml-10">
             <form action="/return_libro" method="post">
                 <input class="rounded-md m-1" type="number" name="id" placeholder="Id" value="{{this.id}}" required readonly style="display:none">
-                {{!-- <input class="rounded-md m-1" type="number" name="calificacion" placeholder="estrellas" value="{{this.calificacion}}"> --}}
+                    {{!-- <input class="rounded-md m-1" type="number" name="calificacion" placeholder="estrellas" value="{{this.calificacion}}"> --}}
 
-                <label for="start"><i class="uil uil-start icon"></i> Calification</label>
+                <label for="start"><i class="uil uil-start icon"></i>Quieres calificar el libro?</label>
                 <div class="star-widget">
                     <input type="radio" name="rate-5" id="rate-5">
                     <label for="rate-5" class="fas fa-star"></label>
@@ -53,6 +52,7 @@
                 <button class="rounded-md m-1 p-2 text-white bg-orange-300">Pagar</button>
             </form>
         </div>
+
         {{!-- {{#if (igual this.estado ../inactivo)}}
             <div class="flex items-end ml-10">
                 <p>Libro devuelto</p>

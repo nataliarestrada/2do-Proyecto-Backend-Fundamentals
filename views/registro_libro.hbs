@@ -1,12 +1,12 @@
-<div class="flex flex-col items-center">
-    <h2 class="text-lg text-blue-500">Registro de Libros</h2>
+<div class="flex flex-col items-center pt-5">
+    <h2 class="text-lg text-blue-500 pb-4">Registro de Libros</h2>
     <form class="flex flex-col p-5 w-1/4 bg-gray-100" action="/registro_libro" method="post">
         <input class="rounded-md m-1" type="text" name="titulo" placeholder="Titulo" value="{{libro.titulo}}" required>
         <input class="rounded-md m-1" type="text" name="autor" placeholder="Autor" value="{{libro.autor}}" required>
         <input class="rounded-md m-1" type="text" name="portada" placeholder="url foto de portada" value="{{libro.portada}}" required>
         <input class="rounded-md m-1" type="number" name="precio" placeholder="Precio" value="{{libro.precio}}" required> 
-        <input class="rounded-md m-1" type="text" name="estado" value="DISPONIBLE" required style="display:none">
-        <input class="rounded-md m-1" type="number" name="id_usuario" value="{{session.idUsuario}}" required style="display:none">
+        <input class="rounded-md m-1" type="text" name="estado" value="DISPONIBLE" required readonly style="display:none">
+        <input class="rounded-md m-1" type="number" name="id_usuario" value="{{session.idUsuario}}" required readonly style="display:none">
         <button class="rounded-md m-1 p-2 text-white bg-blue-400" >Guardar</button>
 
         {{#unless validation.success}}
