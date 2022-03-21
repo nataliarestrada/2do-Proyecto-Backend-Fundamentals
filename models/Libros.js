@@ -12,11 +12,11 @@ class Book{
         
     }
 
-    //devuelve todos los libros con su respectivo promedio de estrellas(rating)
+    //devuelve todos los libros con su respectivo promedio de estrellas(rating) y la cantidad de veces que se rento el libro (vistas)
     static async readAll(id){
-
+        return await query("SELECT libro.*, vistas, rating FROM libro LEFT JOIN (SELECT id_libro, COUNT(id) as vistas FROM renta GROUP BY id_libro) as table1 ON libro.id = table1.id_libro LEFT JOIN (SELECT id_libro, SUM(calificacion) / COUNT(id) as rating FROM renta WHERE calificacion IS NOT NULL GROUP BY id_libro) as table2 ON libro.id = table2.id_libro ORDER BY table1.vistas DESC")
         //return await query("SELECT * FROM libro WHERE id_usuario!=?",[id])
-        return await query("SELECT * FROM libro LEFT JOIN (SELECT id_libro, SUM(calificacion) / COUNT(id) as rating FROM renta WHERE calificacion IS NOT NULL GROUP BY id_libro) as table1 ON libro.id = table1.id_libro ORDER BY table1.rating DESC")
+        //return await query("SELECT * FROM libro LEFT JOIN (SELECT id_libro, SUM(calificacion) / COUNT(id) as rating FROM renta WHERE calificacion IS NOT NULL GROUP BY id_libro) as table1 ON libro.id = table1.id_libro ORDER BY table1.rating DESC")
     }
     
     // static async rentaLibro(id){

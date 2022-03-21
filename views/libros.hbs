@@ -26,8 +26,12 @@
                         {{!-- <p>{{this.estado}}</p>
                         <p>{{this.id_usuario}}</p> --}}
         
-                        {{#if (isNotZero this.rating)}}
+                        {{#if this.rating}}
                             <p>⭐ {{formatNum this.rating}}</p>
+                        {{/if}}
+
+                        {{#if this.vistas}}
+                            <p>📖 {{this.vistas}} lecturas </p>
                         {{/if}}
                         
                         {{!-- <p>Calificacion promedio{{calificacion this.id}}</p> --}}
