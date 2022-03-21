@@ -83,7 +83,13 @@ app.engine('hbs',engine({
             const newNum = Number(num)
             const aux = newNum.toFixed(2)
             return aux
-
+        },
+        isNotZero:function(num){
+            const newNum = Number(num)
+            if (newNum != 0){
+                return true
+            }
+            return false
         }
     }
 }))

@@ -25,7 +25,11 @@
                         <p>Precio: ${{this.precio}}</p>
                         {{!-- <p>{{this.estado}}</p>
                         <p>{{this.id_usuario}}</p> --}}
-                        <p>⭐ {{formatNum this.rating}}</p>
+        
+                        {{#if (isNotZero this.rating)}}
+                            <p>⭐ {{formatNum this.rating}}</p>
+                        {{/if}}
+                        
                         {{!-- <p>Calificacion promedio{{calificacion this.id}}</p> --}}
                     </div>
                     
