@@ -11,15 +11,15 @@
 {{#if hasBook }}
     <ul>
         {{#each libros}}
-            {{#if (igual this.id_usuario session.idUsuario)}}
-
+            {{#if (igual this.id_usuario ../usuario)}}
+                <p></p>
             {{else}}
                 <div class="flex m-3 bg-gray-200 gap-5 h-32">
                     <figure class="w-20 h-20">
                         <img  src="{{this.portada}}">
                     </figure>
                     <div >
-                        {{!-- <p>id:{{this.id}}</p> --}}
+                        {{!-- <p>id:{{igual this.id_usuario ../usuario}}</p> --}}
                         <h3 class="font-bold text-lg">{{this.titulo}}</h3>
                         <p>Autor: {{this.autor}}</p>
                         <p>Precio: ${{this.precio}}</p>

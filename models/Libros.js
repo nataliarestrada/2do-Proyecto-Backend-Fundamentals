@@ -12,7 +12,7 @@ class Book{
         
     }
 
-    //devuelve todos los libros exepto los que son del usuario que se logeo
+    //devuelve todos los libros con su respectivo promedio de estrellas(rating)
     static async readAll(id){
 
         //return await query("SELECT * FROM libro WHERE id_usuario!=?",[id])

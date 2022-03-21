@@ -2,14 +2,17 @@ const Book = require("../models/Libros")
 
 class BookController{
 
-    // vista de todos los libros que el usuario puede alquilar (sus propios libros no figuran aqui)    
+    // vista de todos los libros que el usuario puede alquilar (sus propios libros no figuran aqui ->esto lo hago en el front)    
     async getBookView(req,res){
         const data = await Book.readAll(req.session.idUsuario)
+        // console.log(req.session.idUsuario)
+        // console.log(data)
         
         return res.render("libros",{
             libros:data,
             hasBook:data.length > 0,
-            disponible:"DISPONIBLE"
+            disponible:"DISPONIBLE",
+            usuario: req.session.idUsuario
         })
     }
 
